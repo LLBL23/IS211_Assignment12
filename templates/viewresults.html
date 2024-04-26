@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} Quiz Results {% endblock %}</h1>
+  {% if session.get('logged_in') %}
+    <a class="action"> </a>
+  {% endif %}
+{% endblock %}
+
+
+{% block content %}
+<header>
+    <p> You Are Logged In</p>
+</header>
+            <table>
+                <style>
+                    table {
+                    border-spacing: 0;
+                    background-color: #f5f5f5;
+                    }
+
+                    tr:nth-child(even) {
+                    background-color: #e5e5e5;
+                    }
+
+                    th {
+                    border: 1px solid #999;
+                    }
+
+                    td {
+                    border: 1px solid #999;
+                    padding: 0.1em 1em;
+                    }
+
+                    tc {
+                    padding: 8px;
+                    }
+                </style>
+		        <tr>
+                    {% for header in headings3 %}
+			        <th>{{ header }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in results %}
+                <tr>
+                    {% for cell in row %}
+                <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+{% endblock %}
